@@ -21,25 +21,30 @@ btn.addEventListener('click', () => {
 })
 
 
-//THEME SCRIPT
 const themeCheckbox = document.getElementById('theme-checkbox');
 
-// Load saved theme preference
-if (localStorage.getItem('theme') === 'dark') {
-document.documentElement.classList.add('dark');
-themeCheckbox.checked = true;
-}
+// Check localStorage for theme preference
+const savedTheme = localStorage.getItem('theme');
 
-themeCheckbox.addEventListener('change', () => {
-if (themeCheckbox.checked) {
+// Apply saved theme or system preference
+if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
+    themeCheckbox.checked = true;
 } else {
     document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
+    themeCheckbox.checked = false;
 }
-});
 
+// Toggle theme on checkbox change
+themeCheckbox.addEventListener('change', () => {
+    if (themeCheckbox.checked) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+    }
+});
 
 
 //SKILSS CAROUSEL SCRIPT

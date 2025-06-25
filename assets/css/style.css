@@ -76,7 +76,7 @@ body {
     background-image: url(/assets/img/gradient.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 50%;
+    background-size: 55%;
     background-attachment: fixed;
   
     /* Animate using a pseudo element */
@@ -95,8 +95,8 @@ body {
     transform: translate(-50%, -50%);
     background: url(/assets/img/gradient.png) no-repeat center center;
     background-size: contain;
-    z-index: -1;
-    opacity: 0.5;
+    z-index: -999;
+    opacity: 1;
     pointer-events: none;
     animation: spinZoom 20s ease-in-out infinite;
     -webkit-animation: spinZoom 20s ease-in-out infinite; /* Safari */
@@ -105,13 +105,13 @@ body {
     /* === Animation Keyframes === */
 @keyframes spinZoom {
     0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-    50%  { transform: translate(-50%, -50%) scale(1.2) rotate(180deg); }
+    50%  { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); }
     100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
 }
 
 @-webkit-keyframes spinZoom {
     0%   { -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-    50%  { -webkit-transform: translate(-50%, -50%) scale(1.2) rotate(180deg); }
+    50%  { -webkit-transform: translate(-50%, -50%) scale(1.5) rotate(180deg); }
     100% { -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg); }
 }
 
@@ -151,7 +151,7 @@ main.grid-bg{
 .section-heading{
     font-size: var(--lg-font-size);
     margin-bottom: 1em;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .section-heading span {
@@ -569,6 +569,10 @@ nav.navbar.scrolled {
     grid-template-columns: repeat(2, 1fr);
     align-items:center;
     gap: 2em;
+}
+
+#contact .container .contact-container h2{
+    font-weight: 500;
 }
 
 #contact .container .contact-container form{
