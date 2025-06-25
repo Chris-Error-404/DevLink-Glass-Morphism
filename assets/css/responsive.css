@@ -2,6 +2,9 @@
 @media (max-width:1024px){
     body{
         background-size: 150%;
+    }
+
+    body::before{
         position: absolute;
     }
 
