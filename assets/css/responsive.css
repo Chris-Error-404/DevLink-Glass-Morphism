@@ -1,0 +1,115 @@
+/* GENERAL */
+@media (max-width:1024px){
+    body{
+        background-size: 100%;
+    }
+
+    section{
+        margin: 2em 0em; /* space between each section of the page */
+    }
+
+    .section-heading{
+        text-align: center;
+    }
+}
+
+
+/* NAVBAR */
+@media (max-width:1024px){
+    .navbar .container .nav-items{
+        display: none;
+    }
+
+    .theme-toggle{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+}
+
+
+
+/* HERO */
+@media(max-width:768px){
+    #hero .container .info-container{
+        grid-template-columns: repeat(1, 1fr);
+    }    
+
+    #hero .container .info-container .info-box:hover,
+    #hero .container .info-container .info-box:active,
+    #hero .container .info-container .info-box:focus{
+        transform: scale(1);
+    }
+
+}
+
+
+
+/* SKILLS */
+@media(max-width:1024px){
+ /*    #skills .container .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    } */
+
+    #skills .container .skills-container span:hover{
+        background-color: transparent;
+        color: var(--var-black);
+        border-color: var(gray);
+    }
+} 
+
+@media (max-width:768px){ /*removes skill glow for mobile */
+    #skills .container .skills-container span:hover{
+        box-shadow: none;
+    }
+}
+
+
+
+/* PROJECTS */
+@media(max-width:1024px){
+    #projects{
+        margin-top: 2em;
+    }
+    #projects .container .projects-container .project-box .project-content .other {
+        flex-direction: column;
+        align-items:flex-start;
+    }
+}
+
+
+
+
+/* CONTACTS */
+/* CONTACT */
+@media(max-width:1024px){
+    #contact .container .contact-container{
+        grid-template-columns: repeat(1, 1fr);
+        align-items:start;
+        gap: 2em;
+    }
+
+/*     #contact .container .contact-container input,
+    #contact .container .contact-container textarea{
+        border-radius: 50px;
+    } */
+
+    #contact .container .contact-container .text .links{
+        margin-top: 1em;
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+}
+
+
+
+/* FOOTER */
+@media(max-width:1024px){
+    footer .container a.logo{
+        font-size: 1.2em;
+    }
+}

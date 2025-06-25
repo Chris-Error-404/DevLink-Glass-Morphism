@@ -1,0 +1,788 @@
+@font-face {
+    font-family: 'Google Sans';
+    src: url(./fonts/GoogleSansFlex-Regular\ \(1\).ttf) format('truetype');
+}
+
+/* reset */
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root{
+    /* components */
+    --theme-btn-color: #1a1a1a; /* for theme btn*/
+    --theme-btn-boredr: #fff; /* for theme btn*/
+    --menu-btn-color: #1a1a1a; /* for hamburger menu */
+    --grid-line: transparent; /* for for grid background */
+
+    --text-color: #1a1a1a;  /* for text */
+    --bg-color: #fff;   /* for body/page background */
+
+    /* sattic colors ot meant to change on drak mode */
+    --white: #fff;
+    --black: #1a1a1a;
+    --gray: rgba(255, 225, 225, 0.25); /* for glass borders */
+    --primary-color: #63d3ff;
+    --dark-primary-color: #3887ff;
+
+    /* variable colors */
+    --var-black: #1a1a1a; /* dark: => white */
+    --var-white: #fff; /* white => black */
+
+    /* transitions */
+    --default-transition: all 0.2s ease;
+    --slow-transition: all 0.3s ease;
+
+    /* font sizes */
+    --sm-font-size: 0.8em; /* sub-texts */
+    --md-font-size: 1em; /* paragraphs */
+    --lg-font-size: 1.5em; /* headings */
+    /* NOTE the default font size  of <h3> was used for the project accordion heading */
+
+    /* blurs */
+    --sm-blur: 15px;
+    --md-blur: 20px;
+    --lg-blur: 25px;
+}
+
+.dark{
+    --text-color: #fff;
+    --bg-color: #1a1a1a;
+    --menu-btn-color: #fff;
+    --var-black: #fff;
+    --var-white: #1a1a1a;
+    --grid-line: #4b4a4a3d;
+}
+
+html{
+    scroll-behavior: smooth; /* makes scrolling smother */
+}
+
+
+body {
+    font-family: 'Google Sans', system-ui, -apple-system;
+    font-size: var(--md-font-size); /* default font size set to 16px */
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--default-transition);
+  
+    /* Base background image settings */
+    background-image: url(/assets/img/gradient.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    background-attachment: fixed;
+  
+    /* Animate using a pseudo element */
+    position: relative;
+    z-index: 0;
+}
+  
+  /* === Pseudo element to animate the background image === */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60vmin;
+    height: 60vmin;
+    transform: translate(-50%, -50%);
+    background: url(/assets/img/gradient.png) no-repeat center center;
+    background-size: contain;
+    z-index: -1;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: spinZoom 20s ease-in-out infinite;
+    -webkit-animation: spinZoom 20s ease-in-out infinite; /* Safari */
+  }
+  
+    /* === Animation Keyframes === */
+@keyframes spinZoom {
+    0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50%  { transform: translate(-50%, -50%) scale(1.2) rotate(180deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spinZoom {
+    0%   { -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50%  { -webkit-transform: translate(-50%, -50%) scale(1.2) rotate(180deg); }
+    100% { -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+a{
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul,li{
+    list-style-type: none; /* removes list style from all ul */
+}
+
+section{
+    margin: 4em 0em; /* space between each section of the page */
+    padding: 0em 1em;
+    color: var(--text-color);
+}
+
+main.grid-bg{
+    /* grid bacvkground */
+    background-size: 40px 40px;
+    background-attachment: fixed; /* keeos the ody fixed */
+    background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+
+
+/* CUSTOM CSS UTILITIES */
+/* Utilities*/
+.container{
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto; /* margint top & bottom 0 - left &Right auto */
+}
+
+.section-heading{
+    font-size: var(--lg-font-size);
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+
+.section-heading span {
+    color: var(--dark-primary-color);
+}
+
+/* scroll watcher animation (Failed)
+/* .scroll-watcher{
+    height: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 0;
+    background-color: var(--dark-primary-color);
+    width: 100%;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll(block);
+    z-index: 9999;
+}
+
+@keyframes scroll-watcher{
+    to { scale: 1 1; }
+}
+ */
+
+
+
+/* HAMBURGER MENU */
+.hamburger{
+    display: none;
+
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.25s;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.hamburger-top,.hamburger-middle,.hamburger-bottom{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26.5px;
+    height: 2.5px;
+    background-color: var(--menu-btn-color);
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+
+.hamburger-middle{
+    transform: translateY(7px);
+    transition: 0s;
+}
+
+.hamburger-bottom{
+    transform: translateY(14px);
+}
+
+.open {
+    transform: rotate(90deg);
+    transform: translateY(0px);
+}
+
+.open .hamburger-top{
+    transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .hamburger-middle{
+    display: none;
+}
+.open .hamburger-bottom{
+    transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+
+
+
+/* NAVBAR */
+nav.navbar{
+    padding: 0.7em 1em;
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--gray);
+    transition: var(--default-transition);
+}
+
+nav.navbar.scrolled {
+    /* blur/glass effect */
+    background: transparent;
+    backdrop-filter: blur(var(--sm-blur));
+}
+
+
+.navbar .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .container .logo {
+    font-size: var(--lg-font-size);
+    font-weight: 700;
+    transition: var(--default-transition);
+}
+
+.navbar .container .logo:hover{
+    color: var(--dark-primary-color);
+}
+
+.navbar .container .nav-items{
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+    font-size: 0.85;
+}
+
+/* nav-items hover state */
+.navbar .container .nav-items a.animate::after{
+    background-color:  var(--dark-primary-color);
+}
+
+.navbar .container i{
+    font-size: var(--lg-font-size);
+}
+
+
+
+
+/* HERO */
+
+#hero .container .info-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+#hero .container .info-container .info-box{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1.5em;
+    border-radius: 15px;
+    cursor: pointer;
+
+    /* blur effect*/
+    background: transparent;
+    -webkit-backdrop-filter: blur(var(--md-blur));
+    backdrop-filter: blur(var(--md-blur));
+    border: 1px solid var(--gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    transition: var(--slow-transition);
+}
+
+/* info[box states*/
+#hero .container .info-container .info-box:hover,
+#hero .container .info-container .info-box:active,
+#hero .container .info-container .info-box:focus{
+    transform: scale(1.015);
+}
+
+#hero .container .info-container .info-box .heading h3{
+    font-weight: 600;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid var(--dark-primary-color);
+    max-width: fit-content;
+}
+
+#hero .container .info-container .info-box .content strong{
+    font-weight: 600;
+}
+
+#hero .container .info-container .info-box .content p{
+    margin-bottom: 0.5em;
+}
+
+#hero .container .info-container .info-box .content a{
+    text-decoration: underline;
+    color: var(--text-color);
+}
+
+
+
+/* SKILLS */
+#skills .container .skills-container{
+    padding: 1.5em 0em;
+    display: flex;
+    gap: 0.5em;
+    width: max-content;
+    flex-shrink: 0;
+    animation: scrollRight 30s linear infinite;
+    will-change: transform;
+}
+
+#skills .container .skills-container span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: var(--md-font-size);
+    font-weight: 500;
+    border: 1px solid var(--var-black);
+    border-radius: 50px;
+    padding: 0.8em 1em;
+    cursor: pointer;
+
+    /* blur/glass effect */
+    background: transparent;
+    -webkit-backdrop-filter: blur(var(--md-blur));
+    backdrop-filter: blur(var(--md-blur));
+    border-color: var(--gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    transition: var(--default-transition)
+}
+
+/* GLOW EFFECT */
+#skills .container .skills-container span:hover {
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.9), 0 0 40px rgba(0, 123, 255, 0.5);
+}
+
+#skills .container .skills-container span:hover{
+    background-color: var(--primary-color);
+    color: var(--black);
+    border-color: transparent;
+}
+
+#skills .container .skills-container i{
+    font-size: var(--lg-font-size);
+}
+
+
+/* skill carousel */
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 2em;
+  }
+  
+  /* Carousel Track */
+  .carousel-track {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  /* Animate Skills Container Left ➝ Right */
+  
+  /* Scroll Animation */
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  /* Fade Effects */
+  .fade-left,
+  .fade-right {
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-color, #fff), transparent);
+  }
+  
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-color, #fff), transparent);
+  }
+
+
+
+/* PROJECTS */
+#projects{
+    margin-top: -2em; /* to adjust to the padding put on the skills-container*/
+    padding: 0em 1em;
+}
+
+#projects .container .projects-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#projects .container .projects-container .project-box{
+    border-radius: 30px;
+    padding: 1em;
+
+    background: transparent;
+    -webkit-backdrop-filter: blur(var(--md-blur));
+    backdrop-filter: blur(var(--md-blur));
+    border: 1px solid var(--gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#projects .container .projects-container .project-box .project-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#projects .container .projects-container .project-box .project-name h3{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#projects .container .projects-container .project-box .project-name span,
+#projects .container .projects-container .project-box .project-name i{
+    font-weight: 700;
+    font-size: var(--lg-font-size);
+}
+
+#projects .container .projects-container .project-box .project-name i{
+    cursor: pointer;
+}
+
+#projects .container .projects-container .project-box .project-content{
+    padding-top: 0;
+    padding-bottom: 0em;
+    max-height: 0;
+    overflow: hidden;
+/*     transition: max-height 0.3s ease, padding 0.3s ease, background-color 0.3s ease; */
+    transition: var(--default-transition);
+}
+
+#projects .container .projects-container .project-box .project-content a{
+    display: block;
+    font-weight: 700;
+    color: var(--var-black);
+}
+
+#projects .container .projects-container .project-box .project-content .other{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding-top: 1.5em;
+    flex-wrap: wrap;
+}
+
+#projects .container .projects-container .project-box .project-content .other .links{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+#projects .container .projects-container .project-box .project-content .other i{
+    margin-right: 0.3em;
+}
+
+#projects .container .projects-container .project-box .project-content .other a{
+    transition: var(--default-transition);
+    font-weight: 500;
+}
+
+/* .other states */
+#projects .container .projects-container .project-box .project-content .other a:hover,
+#projects .container .projects-container .project-box .project-content .other a:active,
+#projects .container .projects-container .project-box .project-content .other a:focus{
+    color: var(--primary-color);
+}
+
+
+#projects .container .projects-container .project-box .project-content .other .stack{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#projects .container .projects-container .project-box .project-content .other .stack span{
+    font-size: var(--sm-font-size);
+    background-color: var(--black);
+    color: var(--white);
+    padding: 0.6em 1.5em;
+    border: 1px solid var(--gray);
+    border-radius: 50px
+}
+
+/* project open states */
+#projects .container .projects-container .project-box .project-content.open{
+    max-height: 500px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#projects .container .projects-container .project-box.open-box{
+   -webkit-backdrop-filter: blur(var(--lg-blur));
+    backdrop-filter: blur(var(--lg-blur));
+}
+
+
+
+/* CONTACT */
+/* Contact */
+
+#contact .container .contact-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items:center;
+    gap: 2em;
+}
+
+#contact .container .contact-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em 1em;
+    border-radius: 15px;
+
+    background: transparent;
+    -webkit-backdrop-filter: blur(var(--lg-blur));
+    backdrop-filter: blur(var(--lg-blur));
+}
+
+#contact .container .contact-container input,
+#contact .container .contact-container textarea,
+#contact .container .contact-container button{
+    font-family: 'Google Sans';
+    padding: 1em 1em;
+    outline: none;
+    border: 1px solid var(--var-black);
+    border-radius: 8px;
+}
+
+#contact .container .contact-container input,
+#contact .container .contact-container textarea{
+    background: transparent;
+    color: var(--var-black);
+}
+
+#contact .container .contact-container button{
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.8em 1em;
+    font-family: 'Google Sans';
+    border-color: var(--black);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--default-transition);
+}
+#contact .container .contact-container button:hover{
+    background-color: var(--dark-primary-color);
+}
+
+
+#contact .container .contact-container input::placeholder,
+#contact .container .contact-container textarea::placeholder{
+    font-size: var(--md-font-size);
+    color: var(--var-black);
+    padding-left: 0.5em;
+    font-family: 'Google Sans';
+}
+#contact .container .contact-container input{
+    min-width: 100%;
+}
+
+
+#contact .container .contact-container .text span{
+    color: var(--dark-primary-color);
+}
+
+#contact .container .contact-container .text p{
+    margin-top: 0.5em;
+}
+
+#contact .container .contact-container .text .links{
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#contact .container .contact-container .text .links i{
+    font-size: 2em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* link states */
+#contact .container .contact-container .text .links i:hover{
+    color: var(--primary-color);
+}
+/* end CONTACTS */
+
+
+
+/* FOOTER */
+/* footer */
+footer{
+    background-color: var(--black);
+    color: var(--text-color);
+}
+
+footer .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 1em;
+}
+
+footer .container span{
+    font-size: 0.8em;
+}
+
+footer .container a.logo{
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: var(--default-transition);
+}
+
+/* logo states */
+footer .container a:hover{
+    color: var(--dark-primary-color);
+}
+
+
+
+/* THEME BUTTON */
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 4.5em;                 
+    height: 2.5em;                
+    padding: 0.25em 0.5em;         
+    box-sizing: border-box;       
+    background-color: var(--theme-btn-color);
+    border: 1px solid var(--theme-btn-boredr);
+    border-radius: 1.25em;        
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}  
+
+.theme-toggle .icon {
+    font-size: 1.2em;
+    color: var(--white);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.theme-toggle .bx-sun {
+    opacity: 1;
+    /* margin-left: 0.25em; */
+}
+
+.theme-toggle .bx-moon {
+    opacity: 0;
+    margin-left: 0.25em;
+}
+
+.theme-toggle .slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(100% - 0.5em - 1.5em);
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--white);
+  border-radius: 50%;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.theme-toggle input:checked ~ .slider {
+    left: 0.5em;
+}                
+
+.theme-toggle input:checked ~ .bx-sun {
+    opacity: 0;
+}
+
+.theme-toggle input:checked ~ .bx-moon {
+    opacity: 1;
+}
+
+.theme-toggle:hover .icon{
+    color: var(--var-white);
+}.theme-toggle:hover .slider{
+    background-color: var(--var-white);
+}.theme-toggle:hover{
+    background-color: var(--dark-primary-color);
+    border-color: var(--var-white);
+}
+
+
+
+/* CUSTOM ANIMATIONS AND TRANSITIONS */
+a.animate{
+    position: relative; 
+}
+
+a.animate::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+a.animate:hover::after{
+    width: 100%;
+    left: 0;
+}
+
+
