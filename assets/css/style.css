@@ -90,8 +90,8 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50vmin;
-    height: 50vmin;
+    width: 60vmin;
+    height: 60vmin;
     transform: translate(-50%, -50%);
     background-attachment: fixed;
     background: url(/assets/img/gradient.png) no-repeat center center;
@@ -99,7 +99,6 @@ body {
     z-index: -999;
     opacity: 1;
     pointer-events: none;
-    transition: var(--default-transition);
     animation: spinZoom 20s ease-in-out infinite;
     -webkit-animation: spinZoom 20s ease-in-out infinite; /* Safari */
   }

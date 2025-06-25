@@ -1,8 +1,5 @@
 /* GENERAL */
 @media (max-width:1024px){
-    body{
-        background-size: 150%;
-    }
 
     section{
         margin: 2em 0em; /* space between each section of the page */
@@ -60,11 +57,11 @@
         border-color: var(gray);
     }
 
-      /* Fade Effects */
-  .fade-left,
-  .fade-right {
-    width: 1px;
-  }
+        /* Fade Effects */
+    .fade-left,
+    .fade-right {
+        width: 1px;
+    }
 } 
 
 @media (max-width:768px){ /*removes skill glow for mobile */
