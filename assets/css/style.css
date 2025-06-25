@@ -98,6 +98,7 @@ body {
     z-index: -999;
     opacity: 1;
     pointer-events: none;
+    transition: var(--default-transition);
     animation: spinZoom 20s ease-in-out infinite;
     -webkit-animation: spinZoom 20s ease-in-out infinite; /* Safari */
   }
@@ -157,27 +158,6 @@ main.grid-bg{
 .section-heading span {
     color: var(--dark-primary-color);
 }
-
-/* scroll watcher animation (Failed)
-/* .scroll-watcher{
-    height: 10px;
-    position: fixed;
-    top: 0;
-    z-index: 0;
-    background-color: var(--dark-primary-color);
-    width: 100%;
-    scale: 0 1;
-    transform-origin: left;
-    animation: scroll-watcher linear;
-    animation-timeline: scroll(block);
-    z-index: 9999;
-}
-
-@keyframes scroll-watcher{
-    to { scale: 1 1; }
-}
- */
-
 
 
 /* HAMBURGER MENU */
