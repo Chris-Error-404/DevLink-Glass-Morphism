@@ -88,7 +88,7 @@ body {
   /* === Pseudo element to animate the background image === */
   body::before {
     content: "";
-    position: absolute;
+    position: sticky;
     top: 50%;
     left: 50%;
     width: 60vmin;
