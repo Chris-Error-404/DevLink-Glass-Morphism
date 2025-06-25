@@ -94,7 +94,6 @@ body {
     width: 60vmin;
     height: 60vmin;
     transform: translate(-50%, -50%);
-    background-attachment: fixed;
     background: url(/assets/img/gradient.png) no-repeat center center;
     background-size: contain;
     z-index: -999;
