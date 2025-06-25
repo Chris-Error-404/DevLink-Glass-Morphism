@@ -91,8 +91,8 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50svw;
-    height: 50svh;
+    width: 60vmin;
+    height: 60vmin;
     transform: translate(-50%, -50%);
     background-attachment: fixed;
     background: url(/assets/img/gradient.png) no-repeat center center;
