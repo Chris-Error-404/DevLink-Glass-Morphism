@@ -21,34 +21,26 @@ btn.addEventListener('click', () => {
 })
 
 
-const themeCheckbox = document.querySelectorAll('#theme-checkbox');
+//Theme Script
+const checkboxes = document.querySelectorAll('#theme-checkbox');
+const root = document.documentElement;
 
-// Check localStorage for theme preference
 const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-// Apply saved theme or system preference
-if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-    themeCheckbox.checked = true;
-} else {
-    document.documentElement.classList.remove('dark');
-    themeCheckbox.checked = false;
-}
+// Apply saved or preferred theme
+const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+root.classList.toggle('dark', isDark);
+checkboxes.forEach(cb => cb.checked = isDark);
 
-// Toggle theme on checkbox change
-themeCheckbox.addEventListener('change', () => {
-    if (themeCheckbox.checked) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-    }
-
-
-//sync toggles
-
-   
+// Add event listener to all checkboxes
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const theme = cb.checked ? 'dark' : 'light';
+    root.classList.toggle('dark', cb.checked);
+    checkboxes.forEach(c => c.checked = cb.checked); // sync both toggles
+    localStorage.setItem('theme', theme);
+  });
 });
 
 
