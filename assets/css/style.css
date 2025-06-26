@@ -47,6 +47,7 @@
     --sm-blur: 15px;
     --md-blur: 20px;
     --lg-blur: 25px;
+    --xlg-blur: 35px;
 }
 
 .dark{
@@ -84,37 +85,7 @@ body {
     position: relative;
     z-index: 0;
 }
-  
-  /* === Pseudo element to animate the background image === */
-  body::before {
-    content: "";
-    position: sticky;
-    top: 50%;
-    left: 50%;
-    width: 60vmin;
-    height: 60vmin;
-    transform: translate(-50%, -50%);
-    background: url(/assets/img/gradient.png) no-repeat center center;
-    background-size: contain;
-    z-index: -999;
-    opacity: 1;
-    pointer-events: none;
-    animation: spinZoom 20s ease-in-out infinite;
-    -webkit-animation: spinZoom 20s ease-in-out infinite; /* Safari */
-  }
-  
-    /* === Animation Keyframes === */
-@keyframes spinZoom {
-    0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-    50%  { transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
-    100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
-}
 
-@-webkit-keyframes spinZoom {
-    0%   { -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-    50%  { -webkit-transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
-    100% { -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg); }
-}
 
 a{
     color: var(--text-color);
@@ -209,6 +180,26 @@ main.grid-bg{
 }
 
 
+/* OVERLAY */
+.overlay{
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    min-width: 80svw;
+    margin: 0 auto;
+    z-index: 99999;
+}
+
+.overlay .container{
+    background-color: red;
+    min-height: 50svh;
+    border:1px solid var(--gray);
+    border-radius: 15px;
+    background: transparent;
+    -webkit-backdrop-filter: blur(var(--xlg-blur));
+    backdrop-filter: blur(var(--xlg-blur));
+}
+
 
 
 /* NAVBAR */
@@ -225,6 +216,7 @@ nav.navbar{
 nav.navbar.scrolled {
     /* blur/glass effect */
     background: transparent;
+    -webkit-backdrop-filter: blur(var(--sm-blur));
     backdrop-filter: blur(var(--sm-blur));
 }
 
@@ -404,8 +396,8 @@ nav.navbar.scrolled {
     height: 100%;
     z-index: 2;
     pointer-events: none;
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
   
   .fade-left {
@@ -643,7 +635,6 @@ nav.navbar.scrolled {
 /* footer */
 footer{
     background-color: var(--black);
-    color: var(--text-color);
 }
 
 footer .container{
@@ -651,6 +642,7 @@ footer .container{
     justify-content: space-between;
     align-items: center;
     padding: 1.5em 1em;
+    color: var(--white)
 }
 
 footer .container span{
@@ -660,7 +652,7 @@ footer .container span{
 footer .container a.logo{
     font-size: 1.4em;
     font-weight: 700;
-    color: var(--text-color);
+    color: var(--white);
     transition: var(--default-transition);
 }
 
@@ -770,3 +762,33 @@ a.animate:hover::after{
 }
 
 
+/* background image animation */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60vmin;
+    height: 60vmin;
+    transform: translate(-50%, -50%);
+    background: url(/assets/img/gradient.png) no-repeat center center;
+    background-size: contain;
+    z-index: -999;
+    opacity: 1;
+    pointer-events: none;
+    -webkit-animation: spinZoom 20s ease-in-out infinite; 
+    animation: spinZoom 20s ease-in-out infinite;
+  }
+  
+    /* === Animation Keyframes === */
+@keyframes spinZoom {
+    0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50%  { transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spinZoom {
+    0%   { -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50%  { -webkit-transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
+    100% { -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}

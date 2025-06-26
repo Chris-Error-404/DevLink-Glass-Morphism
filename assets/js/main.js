@@ -85,10 +85,7 @@ toggles.forEach(toggle => {
 
         // Toggle background on parent
         projectBox.classList.toggle('open-box');
-/* 
-        //Toggle red background
-        other.classList.toggle('other-open')
- */
+
         // Toggle icon
         if (toggle.classList.contains('bx-plus')) {
             toggle.classList.remove('bx-plus');
