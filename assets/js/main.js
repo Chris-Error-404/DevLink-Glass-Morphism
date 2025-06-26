@@ -11,8 +11,8 @@ window.addEventListener('scroll', () => {
 
 
 //HAMBURGER MENU SCRIPT
-const btn = document.getElementById('menu-btn')
-const nav = document.getElementById('menu')
+const btn = document.getElementById('menu-btn');
+const nav = document.getElementById('menu');
 
 btn.addEventListener('click', () => {
   btn.classList.toggle('open')
@@ -21,7 +21,7 @@ btn.addEventListener('click', () => {
 })
 
 
-const themeCheckbox = document.getElementById('theme-checkbox');
+const themeCheckbox = document.querySelectorAll('#theme-checkbox');
 
 // Check localStorage for theme preference
 const savedTheme = localStorage.getItem('theme');
@@ -44,6 +44,11 @@ themeCheckbox.addEventListener('change', () => {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
     }
+
+
+//sync toggles
+
+   
 });
 
 
