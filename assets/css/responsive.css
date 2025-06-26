@@ -31,6 +31,11 @@
     .hamburger{
         display: block;
     }
+
+    /* mobile theme toggle */
+    .overlay .container .theme-toggle{
+        display: inline-flex;
+    }
 }
 
 
@@ -53,10 +58,6 @@
 
 /* SKILLS */
 @media(max-width:1024px){
- /*    #skills .container .skills-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    } */
 
     #skills .container .skills-container span:hover{
         background-color: transparent;

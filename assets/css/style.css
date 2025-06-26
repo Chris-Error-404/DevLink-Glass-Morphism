@@ -191,13 +191,26 @@ main.grid-bg{
 }
 
 .overlay .container{
-    background-color: red;
     min-height: 50svh;
     border:1px solid var(--gray);
     border-radius: 15px;
     background: transparent;
     -webkit-backdrop-filter: blur(var(--xlg-blur));
     backdrop-filter: blur(var(--xlg-blur));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.overlay .container ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: var(--lg-font-size);
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 
