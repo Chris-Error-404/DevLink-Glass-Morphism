@@ -182,7 +182,7 @@ main.grid-bg{
 
 /* OVERLAY */
 .overlay{
-    transition: top 1s ease-in-out;
+    transition: top 0.5s ease;
 }
 
 /* open state */
@@ -192,8 +192,8 @@ main.grid-bg{
     left: 10%;
     min-width: 80svw;
     margin: 0 auto;
-    z-index: 99999;
-    transition: var(--default-transition);
+    z-index: 99999;/* 
+    transition: var(--default-transition); */
 }
 
 /* open state */
@@ -233,6 +233,10 @@ main.grid-bg{
 .overlay.hidden{
     max-height: 0;
     top: 0;
+/*     animation-name: float;
+    animation-duration: 4s; *//* 
+    transition: top 1s ease-in-out;
+    transition: max-height 1s ease-in-out; */
 }
 .overlay.hidden .container ul{
     display: none;
@@ -835,4 +839,11 @@ a.animate:hover::after{
     0%   { -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg); }
     50%  { -webkit-transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
     100% { -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+
+/* Overlay Float up and down */
+@keyframes float {
+    from { top: 0; }
+    to { top: 25%; }
 }
