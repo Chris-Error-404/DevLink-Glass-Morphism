@@ -198,7 +198,8 @@ main.grid-bg{
 
 /* open state */
 .overlay.flex .container{
-    min-height: 50svh;
+    min-height: 20svh;
+    padding: 2em 1em;
     border:1px solid var(--gray);
     border-radius: 15px;
     background: transparent;
@@ -216,7 +217,7 @@ main.grid-bg{
 .overlay.flex .container ul{
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
     font-size: var(--lg-font-size);
     font-weight: 500;
     text-align: center;
