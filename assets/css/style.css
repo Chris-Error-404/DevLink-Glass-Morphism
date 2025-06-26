@@ -188,7 +188,7 @@ main.grid-bg{
 /* open state */
 .overlay.flex{
     position: fixed;
-    top: 25%;
+    top: 10%;
     left: 10%;
     min-width: 80svw;
     margin: 0 auto;
