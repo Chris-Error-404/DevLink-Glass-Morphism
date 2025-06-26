@@ -188,6 +188,7 @@ main.grid-bg{
     min-width: 80svw;
     margin: 0 auto;
     z-index: 99999;
+    transition: var(--default-transition);
 }
 
 .overlay .container{
@@ -202,6 +203,7 @@ main.grid-bg{
     align-items: center;
     justify-content: center;
     gap: 1em;
+    transition: var(--default-transition);
 }
 
 .overlay .container ul{
@@ -209,9 +211,12 @@ main.grid-bg{
     flex-direction: column;
     gap: 1em;
     font-size: var(--lg-font-size);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-color);
+    transition: var(--default-transition);
 }
+
+
 
 
 
