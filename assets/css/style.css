@@ -181,36 +181,64 @@ main.grid-bg{
 
 
 /* OVERLAY */
-.overlay{
+/* .overlay{
+    -webkit-transition: top 0.5s ease;
+    transition: top 0.5s ease;
+} */
+
+
+
+.overlay.hidden .container{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.overlay.hidden .container ul{
+    display: none;
+}
+.overlay.hidden .container .theme-toggle{
+    display: none;
+    -webkit-transition: top 0.5s ease;
     transition: top 0.5s ease;
 }
 
-/* open state */
-.overlay.flex{
+.overlay{
     position: fixed;
-    top: 10%;
     left: 10%;
     min-width: 80svw;
-    margin: 0 auto;
-    z-index: 99999;/* 
-    transition: var(--default-transition); */
-}
-
-/* open state */
-.overlay.flex .container{
     min-height: 20svh;
     padding: 2em 1em;
     border:1px solid var(--gray);
     border-radius: 15px;
+
     background: transparent;
     -webkit-backdrop-filter: blur(var(--xlg-blur));
     backdrop-filter: blur(var(--xlg-blur));
+
+    z-index: 99999;
+
+    transition: opacity 0.3s ease, top 0.5s ease;
+}
+
+/* open state */
+.overlay.flex{
+    top: 10%;
+    opacity: 1;
+}
+
+/* closed state */
+.overlay.hidden{
+    top: 0;
+    opacity: 0;
+}
+
+/* open state */
+.overlay.flex .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1em;
-    transition: var(--default-transition);
+
 }
 
 /* open state */
@@ -222,7 +250,6 @@ main.grid-bg{
     font-weight: 500;
     text-align: center;
     color: var(--text-color);
-    transition: var(--default-transition);
 }
 
 /* open state */
@@ -230,21 +257,6 @@ main.grid-bg{
     display: inline-flex;
 }
 
-/* closed state */
-.overlay.hidden{
-    max-height: 0;
-    top: 0;
-/*     animation-name: float;
-    animation-duration: 4s; *//* 
-    transition: top 1s ease-in-out;
-    transition: max-height 1s ease-in-out; */
-}
-.overlay.hidden .container ul{
-    display: none;
-}
-.overlay.hidden .container .theme-toggle{
-    display: none;
-}
 
 
 
