@@ -247,6 +247,7 @@ main.grid-bg{
 /* closed state */
 .overlay.hidden .container ul.nav-itens{
     display: none;
+    transition: 0s;
 }
 
 /* closed state */
