@@ -61,7 +61,7 @@
     #skills .container .skills-container span:hover{
         background-color: transparent;
         color: var(--var-black);
-        border-color: var(gray);
+        border-color: var(--dark-primary-color);
     }
 
         /* Fade Effects */
