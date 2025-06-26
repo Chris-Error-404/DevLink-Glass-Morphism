@@ -182,6 +182,11 @@ main.grid-bg{
 
 /* OVERLAY */
 .overlay{
+    transition: top 1s ease-in-out;
+}
+
+/* open state */
+.overlay.flex{
     position: fixed;
     top: 25%;
     left: 10%;
@@ -191,7 +196,8 @@ main.grid-bg{
     transition: var(--default-transition);
 }
 
-.overlay .container{
+/* open state */
+.overlay.flex .container{
     min-height: 50svh;
     border:1px solid var(--gray);
     border-radius: 15px;
@@ -206,7 +212,8 @@ main.grid-bg{
     transition: var(--default-transition);
 }
 
-.overlay .container ul{
+/* open state */
+.overlay.flex .container ul{
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -216,6 +223,24 @@ main.grid-bg{
     color: var(--text-color);
     transition: var(--default-transition);
 }
+
+/* open state */
+.overlay.flex .container .theme-toggle{
+    display: inline-flex;
+}
+
+/* closed state */
+.overlay.hidden{
+    max-height: 0;
+    top: 0;
+}
+.overlay.hidden .container ul{
+    display: none;
+}
+.overlay.hidden .container .theme-toggle{
+    display: none;
+}
+
 
 
 /* active states */
