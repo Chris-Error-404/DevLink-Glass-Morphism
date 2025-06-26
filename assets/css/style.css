@@ -181,26 +181,6 @@ main.grid-bg{
 
 
 /* OVERLAY */
-/* .overlay{
-    -webkit-transition: top 0.5s ease;
-    transition: top 0.5s ease;
-} */
-
-
-
-.overlay.hidden .container{
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-.overlay.hidden .container ul{
-    display: none;
-}
-.overlay.hidden .container .theme-toggle{
-    display: none;
-    -webkit-transition: top 0.5s ease;
-    transition: top 0.5s ease;
-}
-
 .overlay{
     position: fixed;
     left: 10%;
@@ -258,9 +238,31 @@ main.grid-bg{
 }
 
 
+/* closed state */
+.overlay.hidden .container{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* closed state */
+.overlay.hidden .container ul.nav-itens{
+    display: none;
+}
+
+/* closed state */
+.overlay.hidden .container .theme-toggle{
+    display: none;
+    -webkit-transition: top 0.5s ease;
+    transition: top 0.5s ease;
+}
 
 
 /* active states */
+.overlay.hidden .container a:hover,
+.overlay.hidden .container a:focus,
+.overlay.hidden .container a:active{
+    color: var(--primary --dark-primary-color);
+}
 
 
 /* NAVBAR */
